@@ -1,7 +1,4 @@
 // place files you want to import through the `$lib` alias in this folder.
-
-import anchorme from "anchorme";
-
 export interface Episode {
   id: string,
   guid: string,
@@ -24,30 +21,7 @@ const baseURL = PUBLIC_BASE_URL || 'http://localhost:3000';
 
 export async function getEpisodes(page: number = 1, amount: number = 10) {
   const response = await fetch(`${baseURL}/episode?page=${page}&amount=${amount}`);
-  const data = await response.json();
-  data.episodes = data.episodes.map((episode: Episode) => {
-    episode.description = episode.description.replaceAll('\n', '<br>');
-    episode.description = anchorme({
-      input: episode.description,
-      options: {
-          attributes: {
-              target: "_blank",
-              class: "anchor",
-          },
-      },
-      extensions: [
-        {
-          test: /\B@([\w-]+)/gim,
-          transform: string =>
-            `<a target="_blank" href="https://instagram.com/${string.substr(1)}">${string}</a>`
-        }
-      ]
-    });
-
-    return episode;
-  });
-
-  return data;
+  return await response.json();
 }
 
 export function secondsToHMS(seconds: number): string {
