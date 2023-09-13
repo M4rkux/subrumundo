@@ -4,7 +4,7 @@
   export let episode: Episode;
 </script>
 
-<div class="episode-card card card-hover bg-initial">
+<div class="episode-card card bg-initial">
   <div class="flex flex-row">
     <div class="img-wrapper">
       <img src={episode.imageUrl} class="bg-black/50 h-auto w-full" alt={`Image of the episode ${episode.titleNormalized}`} />
