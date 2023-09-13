@@ -15,6 +15,7 @@ export interface Episode {
   duration: number
 }
 
+
 import { PUBLIC_BASE_URL } from '$env/static/public';
 const baseURL = PUBLIC_BASE_URL || 'http://localhost:3000';
 
