@@ -59,16 +59,19 @@
 		{/if}
 
 		{#if episodes.length > 0}
+
 			{#each episodes as episode}
 			<Card episode={episode} />
 			{/each}
+
+		{:else}
+
+			<Loading />
+			
 		{/if}
 
 		{#if total > 0 }
 			<Paginator justify="justify-between" controlVariant="variant-outline" on:page={onPageChange} on:amount={onAmountChange} showNumerals showPreviousNextButtons amountText="episódios" settings={{page: currentPage, amounts: [10, 25], size: total, limit: 10}} separatorText="de"></Paginator>
-		{/if}
-		{#if episodes.length === 0}
-		<Loading />
 		{/if}
 	</div>
 </div>
