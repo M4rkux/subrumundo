@@ -34,7 +34,7 @@
 
 		{#if episodes.length > 0}
 
-		<Paginator justify="justify-between" controlVariant="variant-outline" on:page={onPageChange} on:amount={onAmountChange} showNumerals showPreviousNextButtons amountText="episódios" settings={{page, amounts: [10, 25], size: 300, limit: 10}} separatorText="de"></Paginator>
+		<Paginator justify="justify-between" controlVariant="variant-outline" on:page={onPageChange} on:amount={onAmountChange} showNumerals showPreviousNextButtons amountText="episódios" settings={{page, amounts: [10, 25], size: total, limit: 10}} separatorText="de"></Paginator>
 
 			{#each episodes as episode}
 			<div class="episode-card card card-hover bg-initial">
@@ -45,7 +45,7 @@
 					<div class="p-4 space-y-4">
 						<h3 class="h3 font-bold text-primary-600" data-toc-ignore>{episode.title}</h3>
 						<article>
-							<p class="text-left text-ellipsis whitespace-nowrap overflow-hidden px-10">
+							<p class="text-left text-ellipsis whitespace-nowrap overflow-hidden px-10 description">
 								<!-- cspell:disable -->
 								{@html episode.description}
 								<!-- cspell:enable -->
@@ -81,10 +81,6 @@
 <style lang="scss">
 	.episode-card {
 		@apply overflow-hidden;
-	}
-
-	.description-link {
-		@apply accent-current font-semibold;
 	}
 
 	.description {
