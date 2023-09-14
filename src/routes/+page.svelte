@@ -4,8 +4,8 @@
 	import { Paginator } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import Card from '../components/card.svelte';
-	import Loading from '../components/loading.svelte';
+	import Card from '../components/Card.svelte';
+	import Loading from '../components/Loading.svelte';
 
 	let currentPage: number = 0;
 	let amount: number = 10;
@@ -52,7 +52,7 @@
 
 </script>
 <div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-10 py-10 text-center flex flex-col items-center">
+	<div class="space-y-10 py-10 text-center flex flex-col justify-between items-center h-full">
 
 		{#if total > 0 }
 			<Paginator justify="justify-between" controlVariant="variant-outline" on:page={onPageChange} on:amount={onAmountChange} showNumerals showPreviousNextButtons amountText="episódios" settings={{page: currentPage, amounts: [10, 25], size: total, limit: 10}} separatorText="de"></Paginator>

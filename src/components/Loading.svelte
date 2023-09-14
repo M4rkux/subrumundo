@@ -9,7 +9,7 @@
 
 <style lang="scss">
   figure {
-		@apply flex relative flex-col;
+		@apply flex relative flex-col my-auto;
 	}
 	.img-bg {
 		@apply w-64 h-64 md:w-80 md:h-80;

@@ -11,7 +11,7 @@
     </div>
     <div class="p-4 space-y-4">
       <h3 class="h3 font-bold text-primary-600" data-toc-ignore>{episode.title}</h3>
-      <img src={episode.imageUrl} class="bg-black/50 h-auto w-[300px] block md:hidden mx-auto rounded-lg" alt={`Image of the episode ${episode.titleNormalized}`} />
+      <img src={episode.imageUrl} class="bg-black/50 h-auto w-[300px] block lg:hidden mx-auto rounded-lg" alt={`Image of the episode ${episode.titleNormalized}`} />
       <article>
         <p class="description">
           <!-- cspell:disable -->
@@ -26,7 +26,7 @@
             <img src="play-icon.svg" alt="Play icon" />
           </button>
           <small>{formatDate(episode.pubDate)}</small>
-          -
+          ·
           <small>{secondsToHMS(episode.duration)}</small>
         </div>
       </footer>
@@ -42,7 +42,7 @@
   .img-wrapper {
     @apply hidden items-center w-1/3 max-w-[450px] bg-black;
 
-    @screen md {
+    @screen lg {
       @apply flex;
     }
   }
