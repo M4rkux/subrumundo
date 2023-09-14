@@ -2,7 +2,7 @@
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
 
-	let isMenuVisible = !false;
+	let isMenuVisible = false;
 
 	function toggleMenu() {
 		isMenuVisible = !isMenuVisible;
