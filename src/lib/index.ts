@@ -1,4 +1,8 @@
 // place files you want to import through the `$lib` alias in this folder.
+
+import { PUBLIC_BASE_URL } from '$env/static/public';
+import { currentEpisode, isPlaying, nextEpisode, prevEpisode } from '../store/player';
+
 export interface Episode {
   id: string,
   guid: string,
@@ -15,10 +19,17 @@ export interface Episode {
   duration: number
 }
 
-
-import { PUBLIC_BASE_URL } from '$env/static/public';
 const baseURL = PUBLIC_BASE_URL || 'http://localhost:3000';
+let _isPlaying: boolean;
+let _currentEpisode: Episode;
 
+isPlaying.subscribe((data) => {
+  _isPlaying = data;
+});
+
+currentEpisode.subscribe((data) => {
+  _currentEpisode = data;
+});
 
 export async function getEpisodes(page: number = 1, amount: number = 10) {
   const response = await fetch(`${baseURL}/episode?page=${page}&amount=${amount}`);
@@ -45,4 +56,21 @@ export function formatDate(inputDate: Date): string {
   const month = monthNames[date.getMonth()];
 
   return `${day} de ${month}`;
+}
+
+async function getNextPrevEpisodes(id: string) {
+  const response = await fetch(`${baseURL}/episode/next-prev-episode?id=${id}`);
+  return await response.json();
+}
+
+export async function PlayEpisode(episode: Episode) {
+  if (_currentEpisode?.id === episode.id) {
+    isPlaying.set(!_isPlaying);
+  } else {
+    isPlaying.set(true);
+  }
+  currentEpisode.set(episode);
+  const {next, prev} = await getNextPrevEpisodes(episode.id);
+  nextEpisode.set(next);
+  prevEpisode.set(prev);
 }

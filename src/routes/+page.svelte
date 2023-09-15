@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getEpisodes, type Episode, secondsToHMS, formatDate } from "$lib";
+	import { getEpisodes, type Episode} from "$lib";
 	import { Paginator } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import Card from '../components/Card.svelte';
 	import Loading from '../components/Loading.svelte';
+	import { currentEpisode } from '../store/player';
 
 	let currentPage: number = 0;
 	let amount: number = 10;
@@ -21,6 +22,18 @@
 			amount = Number(searchParams.get('amount'));
 		}
 		getEpisodesFromPage();
+	});
+
+	page.subscribe((data) => {
+		const { searchParams } = data.url;
+		let newPage = 0;
+		if (Number(searchParams.get('page')) >= 1) {
+			newPage = Number(searchParams.get('page')) - 1;
+		}
+		if (newPage !== currentPage) {
+			currentPage = newPage;
+			getEpisodesFromPage();
+		}
 	});
 
 	function updateUrl() {
@@ -51,8 +64,9 @@
 	}
 
 </script>
+
 <div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-10 py-10 text-center flex flex-col justify-between items-center h-full">
+	<div class="space-y-10 py-10 text-center flex flex-col justify-between items-center h-full {$currentEpisode ? 'pb-[115px]' : ''}">
 
 		{#if total > 0 }
 			<Paginator justify="justify-between" controlVariant="variant-outline" on:page={onPageChange} on:amount={onAmountChange} showNumerals showPreviousNextButtons amountText="episódios" settings={{page: currentPage, amounts: [10, 25], size: total, limit: 10}} separatorText="de"></Paginator>

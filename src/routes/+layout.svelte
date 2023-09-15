@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
+	import Player from '../components/Player.svelte';
 
 	let isMenuVisible = false;
 
@@ -23,7 +24,9 @@
 		<!-- App Bar -->
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<strong class="text-xl uppercase">Subrumundo</strong>
+				<strong class="text-xl uppercase">
+					<a href="/">Subrumundo</a>
+				</strong>
 			</svelte:fragment>
 			<svelte:fragment slot="trail">
 				<div class="sm:hidden">
@@ -142,4 +145,5 @@
 	</svelte:fragment>
 	<!-- Page Route Content -->
 	<slot />
+	<Player />
 </AppShell>
