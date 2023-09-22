@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { PlayEpisode, type Episode } from "$lib";
+	import { PlayEpisode, secondsToHMSFormatted, type Episode } from "$lib";
+	import { ProgressBar } from "@skeletonlabs/skeleton";
 	import { currentEpisode, isPlaying, nextEpisode, prevEpisode } from "../store/player";
 
   let episode: Episode;
@@ -20,9 +21,15 @@
   function onClickPlayEpisode() {
     PlayEpisode(episode);
   }
+
+  function onClickPlayPrevEpisode() {
+    PlayEpisode($prevEpisode);
+  }
+
+  function onClickPlayNextEpisode() {
+    PlayEpisode($nextEpisode);
+  }
 </script>
-
-
 
 <div class="player {$currentEpisode ? 'player--show' : ''}">
   <div class="player__episode-description">
@@ -32,20 +39,27 @@
       <h6 class="h6">{subtitle}</h6>
     </div>
   </div>
-  <div class="player__controls">
-    <button type="button" class="player__btn-control" disabled="{!!$prevEpisode?.id}">
-      <img src="previous.svg" alt="Previous icon" />
-    </button>
-    <button type="button" class="btn-icon variant-filled w-[36px] h-[36px] mr-4" on:click={onClickPlayEpisode}>
-      {#if !$isPlaying}
-        <img src="play-icon.svg" alt="Play icon" />
-      {:else}
-        <img src="pause-icon.svg" alt="Pause icon" />
-      {/if}
-    </button>
-    <button type="button" class="player__btn-control" disabled="{!!$nextEpisode}">
-      <img src="next.svg" alt="Next icon" />
-  </button>
+  <div class="flex flex-col gap-2 w-full">
+    <div class="player__controls">
+      <button type="button" class="player__btn-control" disabled="{!$prevEpisode}" on:click={onClickPlayPrevEpisode}>
+        <img src="previous.svg" alt="Previous icon" />
+      </button>
+      <button type="button" class="btn-icon variant-filled w-[36px] h-[36px] mr-4" on:click={onClickPlayEpisode}>
+        {#if !$isPlaying}
+          <img src="play-icon.svg" alt="Play icon" />
+        {:else}
+          <img src="pause-icon.svg" alt="Pause icon" />
+        {/if}
+      </button>
+      <button type="button" class="player__btn-control" disabled="{!$nextEpisode}" on:click={onClickPlayNextEpisode}>
+        <img src="next.svg" alt="Next icon" />
+      </button>
+    </div>
+    <div class="flex flex-row items-center gap-2">
+      <span>{episode ? secondsToHMSFormatted(0) : ''}</span>
+      <ProgressBar class="player__progress-bar" label="Episode progress Bar" value={50} max={100} track="bg-surface-200-700-token" meter="bg-surface-900-50-token" />
+      <span>{episode ? secondsToHMSFormatted(episode.duration) : ''}</span>
+    </div>
   </div>
   <div>
     Volume
@@ -66,15 +80,23 @@
   }
 
   &__image {
-    @apply rounded-lg;
+    @apply rounded-lg hidden;
+
+    @screen sm {
+      @apply block;
+    }
+  }
+
+  &__progress-bar {
+    @apply w-full min-w-[200px];
   }
 
   &__controls {
-    @apply flex items-center;
+    @apply flex self-center items-center;
   }
 
   &__btn-control {
-    @apply btn-icon variant-filled w-[26px] h-[26px] mr-4;
+    @apply btn-icon variant-filled-tertiary w-[26px] h-[26px] mr-4;
 
     &:disabled {
       @apply opacity-50;

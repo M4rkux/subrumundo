@@ -44,6 +44,14 @@ export function secondsToHMS(seconds: number): string {
   return `${hours ? `${hours} hr` : '' } ${minutes ? `${minutes} min` : ''} ${hours ? '' : `${remainingSeconds} sec`} `;
 }
 
+export function secondsToHMSFormatted(seconds: number = 0): string {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+
+  return `${hours ? `${hours.toString().padStart(2, '0')}:` : '' }${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+}
+
 export function formatDate(inputDate: Date): string {
   const date = new Date(inputDate);
   const monthNames = [

@@ -21,7 +21,7 @@
 		if (searchParams.has('amount')) {
 			amount = Number(searchParams.get('amount'));
 		}
-		getEpisodesFromPage();
+		getEpisodesByPage();
 	});
 
 	page.subscribe((data) => {
@@ -32,7 +32,7 @@
 		}
 		if (newPage !== currentPage) {
 			currentPage = newPage;
-			getEpisodesFromPage();
+			getEpisodesByPage();
 		}
 	});
 
@@ -46,17 +46,17 @@
 
 	function onPageChange(e: CustomEvent): void {
 		currentPage = e.detail;
-		getEpisodesFromPage();
+		getEpisodesByPage();
 		updateUrl();
 	}
 
 	function onAmountChange(e: CustomEvent): void {
 		amount = e.detail;
-		getEpisodesFromPage();
+		getEpisodesByPage();
 		updateUrl();
 	}
 	
-	async function getEpisodesFromPage() {
+	async function getEpisodesByPage() {
 		episodes = [];
 		const data = await getEpisodes(currentPage + 1, amount);
 		episodes = data.episodes;
