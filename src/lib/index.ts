@@ -76,9 +76,9 @@ export async function PlayEpisode(episode: Episode) {
     isPlaying.set(!_isPlaying);
   } else {
     isPlaying.set(true);
+    currentEpisode.set(episode);
+    const {next, prev} = await getNextPrevEpisodes(episode.id);
+    nextEpisode.set(next);
+    prevEpisode.set(prev);
   }
-  currentEpisode.set(episode);
-  const {next, prev} = await getNextPrevEpisodes(episode.id);
-  nextEpisode.set(next);
-  prevEpisode.set(prev);
 }

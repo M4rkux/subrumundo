@@ -18,7 +18,6 @@
 
   let currentTime = 0;
   let rAF: number;
-  let showOldUI = false;
 
   function whilePlaying() {
 		currentTime = audioController.currentTime;
@@ -33,7 +32,6 @@
         await audioController.play();
       } catch (error) {
         console.error(error);
-        showOldUI = true;
       }
     } else {
       cancelAnimationFrame(rAF);
@@ -96,13 +94,12 @@
   </div>
   <div class="flex flex-col gap-2 w-full">
     <div>
-      <audio bind:this={audioController} controls={showOldUI}>
+      <audio bind:this={audioController} crossorigin="anonymous">
         <source id="audioSource" src={episode?.audioUrl} />
         O seu navegador não suporta o elemento <code>audio</code>.
         <track kind="captions" />
       </audio>
     </div>
-    {#if !showOldUI}
     <div class="player__controls">
       <button type="button" class="player__btn-control btn-icon" disabled="{!$prevEpisode}" on:click={onClickPlayPrevEpisode}>
         <img src="previous.svg" alt="Previous icon" />
@@ -132,7 +129,6 @@
       </div>
       <span class="min-w-[40px]">{episode ? secondsToHMSFormatted(episode.duration) : ''}</span>
     </div>
-    {/if}
   </div>
 </div>
 
