@@ -33,12 +33,12 @@
   isPlaying.subscribe(async (_isPlaying) => {
     if (!audioController) return;
     if (_isPlaying) {
-      requestAnimationFrame(whilePlaying);
       try {
         await audioController.play();
       } catch (error) {
         console.error(error);
       }
+      requestAnimationFrame(whilePlaying);
     } else {
       cancelAnimationFrame(rAF);
       audioController.pause();
