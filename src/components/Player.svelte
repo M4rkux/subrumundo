@@ -17,8 +17,8 @@
   }
 
   let currentTime = 0;
-
   let rAF: number;
+  let showOldUI = false;
 
   function whilePlaying() {
 		currentTime = audioController.currentTime;
@@ -29,7 +29,12 @@
     if (!audioController) return;
     if (_isPlaying) {
       requestAnimationFrame(whilePlaying);
-      await audioController.play();
+      try {
+        await audioController.play();
+      } catch (error) {
+        console.error(error);
+        showOldUI = true;
+      }
     } else {
       cancelAnimationFrame(rAF);
       audioController.pause();
@@ -63,7 +68,7 @@
     audioController.addEventListener('pause', () => {
       isPlaying.set(false);
     });
-    
+
     audioController.addEventListener('play', () => {
       isPlaying.set(true);
     });
@@ -91,14 +96,15 @@
   </div>
   <div class="flex flex-col gap-2 w-full">
     <div>
-      <audio bind:this={audioController}>
+      <audio bind:this={audioController} controls={showOldUI}>
         <source id="audioSource" src={episode?.audioUrl} />
         O seu navegador não suporta o elemento <code>audio</code>.
         <track kind="captions" />
       </audio>
     </div>
+    {#if !showOldUI}
     <div class="player__controls">
-      <button type="button" class="player__btn-control" disabled="{!$prevEpisode}" on:click={onClickPlayPrevEpisode}>
+      <button type="button" class="player__btn-control btn-icon" disabled="{!$prevEpisode}" on:click={onClickPlayPrevEpisode}>
         <img src="previous.svg" alt="Previous icon" />
       </button>
       <button type="button" class="btn-icon variant-filled w-[36px] h-[36px] mr-4" on:click={onClickPlayEpisode}>
@@ -108,7 +114,7 @@
           <img src="pause-icon.svg" alt="Pause icon" />
         {/if}
       </button>
-      <button type="button" class="player__btn-control" disabled="{!$nextEpisode}" on:click={onClickPlayNextEpisode}>
+      <button type="button" class="player__btn-control btn-icon" disabled="{!$nextEpisode}" on:click={onClickPlayNextEpisode}>
         <img src="next.svg" alt="Next icon" />
       </button>
     </div>
@@ -126,6 +132,7 @@
       </div>
       <span class="min-w-[40px]">{episode ? secondsToHMSFormatted(episode.duration) : ''}</span>
     </div>
+    {/if}
   </div>
 </div>
 
@@ -159,7 +166,7 @@
   }
 
   &__btn-control {
-    @apply btn-icon variant-filled-tertiary w-[26px] h-[26px] mr-4;
+    @apply variant-filled-tertiary w-[26px] h-[26px] mr-4;
 
     &:disabled {
       @apply opacity-50;
