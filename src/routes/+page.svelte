@@ -12,8 +12,9 @@
 	let amount: number = 10;
 	let episodes: Episode[] = [];
 	let total = 0;
+	let pageLoaded = false;
 
-	onMount(async () => {
+	onMount(() => {
 		const { searchParams } = $page.url;
 		if (Number(searchParams.get('page')) >= 1) {
 			currentPage = Number(searchParams.get('page')) - 1;
@@ -22,6 +23,7 @@
 			amount = Number(searchParams.get('amount'));
 		}
 		getEpisodesByPage();
+		pageLoaded = true;
 	});
 
 	page.subscribe((data) => {
@@ -30,7 +32,7 @@
 		if (Number(searchParams.get('page')) >= 1) {
 			newPage = Number(searchParams.get('page')) - 1;
 		}
-		if (newPage !== currentPage) {
+		if (newPage !== currentPage && pageLoaded) {
 			currentPage = newPage;
 			getEpisodesByPage();
 		}

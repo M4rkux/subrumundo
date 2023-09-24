@@ -24,6 +24,12 @@
 		rAF = requestAnimationFrame(whilePlaying);
 	};
 
+  currentEpisode.subscribe((_currentEpisode) => {
+    if (!audioController || !_currentEpisode) return;
+    audioController.src = _currentEpisode.audioUrl;
+    audioController.load();
+  });
+
   isPlaying.subscribe(async (_isPlaying) => {
     if (!audioController) return;
     if (_isPlaying) {
@@ -39,12 +45,7 @@
     }
   });
 
-  currentEpisode.subscribe((_currentEpisode) => {
-    if (!audioController || !_currentEpisode) return;
-    audioController.src = _currentEpisode.audioUrl;
-    audioController.load();
-    audioController.play();
-  });
+ 
 
   currentEpisode.subscribe((data) => {
     episode = data;
@@ -75,11 +76,11 @@
       PlayEpisode($nextEpisode);
     });
 
-    navigator.mediaSession.setActionHandler('nexttrack', function() { 
+    navigator.mediaSession.setActionHandler('nexttrack', () => { 
       PlayEpisode($nextEpisode);
     });
 
-    navigator.mediaSession.setActionHandler('previoustrack', function() { 
+    navigator.mediaSession.setActionHandler('previoustrack', () => { 
       PlayEpisode($prevEpisode);
     });
   });
@@ -94,7 +95,7 @@
   </div>
   <div class="flex flex-col gap-2 w-full">
     <div>
-      <audio bind:this={audioController} crossorigin="anonymous">
+      <audio bind:this={audioController}>
         <source id="audioSource" src={episode?.audioUrl} />
         O seu navegador não suporta o elemento <code>audio</code>.
         <track kind="captions" />
