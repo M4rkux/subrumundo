@@ -72,9 +72,9 @@ async function getNextPrevEpisodes(id: string) {
 }
 
 export async function PlayEpisode(episode: Episode) {
-  if (_isPlaying && _currentEpisode.id === episode.id) {
-    isPlaying.set(false);
-  } else {
+  isPlaying.set(!_isPlaying);
+
+  if (_currentEpisode?.id !== episode.id) {
     currentEpisode.set(episode);
     isPlaying.set(false);
     isPlaying.set(true);
