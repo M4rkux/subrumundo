@@ -89,8 +89,8 @@
   <div class="player__episode-description">
     <img class="player__image" src={episode?.imageUrl} alt="Episode art"/>
     <div class="flex flex-col items-start justify-center">
-      <h4 class="h4">{title}</h4>
-      <h6 class="h6">{subtitle}</h6>
+      <h4 class="player__title">{title}</h4>
+      <h6 class="player__subtitle">{subtitle}</h6>
     </div>
   </div>
   <div class="flex flex-col gap-2 w-full">
@@ -105,7 +105,7 @@
       <button type="button" class="player__btn-control btn-icon" disabled="{!$prevEpisode}" on:click={onClickPlayPrevEpisode}>
         <img src="previous.svg" alt="Previous icon" />
       </button>
-      <button type="button" class="btn-icon variant-filled w-[36px] h-[36px] mr-4" on:click={onClickPlayEpisode}>
+      <button type="button" class="btn-icon variant-filled w-[36px] h-[36px]" on:click={onClickPlayEpisode}>
         {#if !$isPlaying}
           <img src="play-icon.svg" alt="Play icon" />
         {:else}
@@ -135,8 +135,12 @@
 
 <style lang="scss">
 .player {
-  @apply fixed bottom-0 h-[100px] w-full flex gap-20 justify-between bg-gray-950 px-4 py-2;
+  @apply fixed bottom-0 h-[100px] w-full flex gap-2 justify-between bg-gray-950 px-4 py-2;
   @apply translate-y-full transition-all;
+
+  @screen sm {
+    @apply gap-20;
+  }
 
   &--show {
     @apply translate-y-0;
@@ -154,16 +158,33 @@
     }
   }
 
+
+  &__title {
+    @apply text-sm;
+
+    @screen sm {
+      @apply text-xl whitespace-nowrap;
+    }
+  }
+
+  &__subtitle {
+    @apply text-xs;
+
+    @screen sm {
+      @apply text-lg;
+    }
+  }
+
   &__progress-bar {
-    @apply w-full min-w-[200px];
+    @apply w-full;
   }
 
   &__controls {
-    @apply flex self-center items-center;
+    @apply flex self-center items-center gap-4;
   }
 
   &__btn-control {
-    @apply variant-filled-tertiary w-[26px] h-[26px] mr-4;
+    @apply variant-filled-tertiary w-[26px] h-[26px];
 
     &:disabled {
       @apply opacity-50;
