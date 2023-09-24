@@ -79,7 +79,7 @@
 				showNumerals
 				showPreviousNextButtons
 				amountText="episódios"
-				settings={{page: currentPage, amounts: [10, 25], size: total, limit: 10}}
+				settings={{page: currentPage, amounts: [10, 25], size: total, limit: amount}}
 				separatorText="de">
 			</Paginator>
 		{/if}
@@ -105,7 +105,7 @@
 				showNumerals
 				showPreviousNextButtons
 				amountText="episódios"
-				settings={{page: currentPage, amounts: [10, 25], size: total, limit: 10}}
+				settings={{page: currentPage, amounts: [10, 25], size: total, limit: amount}}
 				separatorText="de">
 			</Paginator>
 		{/if}
