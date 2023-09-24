@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { PlayEpisode, secondsToHMSFormatted, type Episode } from "$lib";
+	import { onMount } from "svelte";
 	import { currentEpisode, isPlaying, nextEpisode, prevEpisode } from "../store/player";
 	import { ProgressBar } from "@skeletonlabs/skeleton";
 
@@ -27,6 +28,7 @@
   isPlaying.subscribe(async (_isPlaying) => {
     if (!audioController) return;
     if (_isPlaying) {
+      requestAnimationFrame(whilePlaying);
       await audioController.play();
     } else {
       cancelAnimationFrame(rAF);
@@ -38,7 +40,6 @@
     if (!audioController || !_currentEpisode) return;
     audioController.src = _currentEpisode.audioUrl;
     audioController.load();
-    requestAnimationFrame(whilePlaying);
     audioController.play();
   });
 
@@ -58,13 +59,28 @@
     PlayEpisode($nextEpisode);
   }
 
-  function updatePosition() {
-		if(!audioController.paused) {
-			requestAnimationFrame(whilePlaying);
-		}
-	}
-</script>
+  onMount(() => {
+    audioController.addEventListener('pause', () => {
+      isPlaying.set(false);
+    });
+    
+    audioController.addEventListener('play', () => {
+      isPlaying.set(true);
+    });
 
+    audioController.addEventListener('ended',() => {
+      PlayEpisode($nextEpisode);
+    });
+
+    navigator.mediaSession.setActionHandler('nexttrack', function() { 
+      PlayEpisode($nextEpisode);
+    });
+
+    navigator.mediaSession.setActionHandler('previoustrack', function() { 
+      PlayEpisode($prevEpisode);
+    });
+  });
+</script>
 <div class="player {$currentEpisode ? 'player--show' : ''}">
   <div class="player__episode-description">
     <img class="player__image" src={episode?.imageUrl} alt="Episode art"/>

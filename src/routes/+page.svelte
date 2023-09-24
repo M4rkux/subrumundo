@@ -69,7 +69,17 @@
 	<div class="space-y-10 py-10 text-center flex flex-col justify-between items-center h-full {$currentEpisode ? 'pb-[115px]' : ''}">
 
 		{#if total > 0 }
-			<Paginator justify="justify-between" controlVariant="variant-outline" on:page={onPageChange} on:amount={onAmountChange} showNumerals showPreviousNextButtons amountText="episódios" settings={{page: currentPage, amounts: [10, 25], size: total, limit: 10}} separatorText="de"></Paginator>
+			<Paginator
+				justify="justify-between"
+				controlVariant="variant-outline"
+				on:page={onPageChange}
+				on:amount={onAmountChange}
+				showNumerals
+				showPreviousNextButtons
+				amountText="episódios"
+				settings={{page: currentPage, amounts: [10, 25], size: total, limit: 10}}
+				separatorText="de">
+			</Paginator>
 		{/if}
 
 		{#if episodes.length > 0}
@@ -85,7 +95,17 @@
 		{/if}
 
 		{#if total > 0 }
-			<Paginator justify="justify-between" controlVariant="variant-outline" on:page={onPageChange} on:amount={onAmountChange} showNumerals showPreviousNextButtons amountText="episódios" settings={{page: currentPage, amounts: [10, 25], size: total, limit: 10}} separatorText="de"></Paginator>
+			<Paginator
+				justify="justify-between"
+				controlVariant="variant-outline"
+				on:page={onPageChange}
+				on:amount={onAmountChange}
+				showNumerals
+				showPreviousNextButtons
+				amountText="episódios"
+				settings={{page: currentPage, amounts: [10, 25], size: total, limit: 10}}
+				separatorText="de">
+			</Paginator>
 		{/if}
 	</div>
 </div>
