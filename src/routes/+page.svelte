@@ -54,7 +54,6 @@
 
 	function onAmountChange(e: CustomEvent): void {
 		amount = e.detail;
-		updateCurrentPage();
 		getEpisodesByPage();
 		updateUrl();
 	}
@@ -68,6 +67,7 @@
 	
 	async function getEpisodesByPage() {
 		episodes = [];
+		updateCurrentPage();
 		const data = await getEpisodes(currentPage + 1, amount);
 		episodes = data.episodes;
 		total = data.total;
