@@ -54,8 +54,16 @@
 
 	function onAmountChange(e: CustomEvent): void {
 		amount = e.detail;
+		updateCurrentPage();
 		getEpisodesByPage();
 		updateUrl();
+	}
+
+	function updateCurrentPage() {
+		const pages = Math.floor(total / amount);
+		if (currentPage > pages) {
+			currentPage = pages;
+		}
 	}
 	
 	async function getEpisodesByPage() {
