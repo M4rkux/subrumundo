@@ -32,7 +32,15 @@ currentEpisode.subscribe((data) => {
 });
 
 export async function getEpisodes(page: number = 1, amount: number = 10) {
-  const response = await fetch(`${baseURL}/episode?page=${page}&amount=${amount}`);
+  const url = `${baseURL}/episode?page=${page}&amount=${amount}`;
+
+  if (page === 1 && amount === 10) {
+    fetch(url);
+    const response = await fetch('cache.json');
+    return await response.json();
+  }
+
+  const response = await fetch(url);
   return await response.json();
 }
 
