@@ -1,7 +1,25 @@
 {
   "episodes": [
     {
-      "id": "650e124471bca69804633adc",
+      "id": "652051ba2fb6808d7d19fd2d",
+      "guid": "1bc06a79-9963-4a27-aa77-8cf0d42af5e6",
+      "title": "Subrumundo #295 - Leituras Frias",
+      "slug": "subrumundo-295-leituras-frias",
+      "description": "Já criou uma ilusão que se tornou realidade?<br>LOJINHA SUBRUMUNDO: <a target=\"_blank\"  class=\"anchor\" href=\"https://subrumundo-terror.lojaintegrada.com.br\">https://subrumundo-terror.lojaintegrada.com.br</a><br>Quero ouvir suas sugestões:  <a target=\"_blank\"  class=\"anchor\" href=\"mailto:subrumundo@gmail.com\">subrumundo@gmail.com</a><br>Facebook: Subrumundo terror.<br>Instagram: <a target=\"_blank\" class=\"anchor\" href=\"https://instagram.com/subrumundo\">@subrumundo</a><br>Quer apoiar o projeto?  <br><a target=\"_blank\"  class=\"anchor\" href=\"http://patreon.com/subrumundo\">patreon.com/subrumundo</a>  <br><a target=\"_blank\"  class=\"anchor\" href=\"http://www.catarse.me/subrumundoterror\">www.catarse.me/subrumundoterror</a><br>ou  procure Subrumundo no PicPay  <br>Music from:<br><a target=\"_blank\"  class=\"anchor\" href=\"http://www.incompetech.com\">www.incompetech.com</a><br><a target=\"_blank\"  class=\"anchor\" href=\"http://www.youtube.com/myuuji\">www.youtube.com/myuuji</a><br>Dave Grusin<br><br><br><br><br>--- <br><br>Send in a voice message: <a target=\"_blank\"  class=\"anchor\" href=\"https://podcasters.spotify.com/pod/show/subrumundo/message\">https://podcasters.spotify.com/pod/show/subrumundo/message</a>",
+      "imageUrl": "https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_episode/1615989/1615989-1696603502022-30daaa8ef29f6.jpg",
+      "embedUrl": "https://anchor.fm/subrumundo/embed/episodesow/subrumundo/episodes/Subrumundo-295---Leituras-Frias-e2a89ee",
+      "audioUrl": "https://anchor.fm/s/a3a6434/podcast/play/76866446/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-9-6%2F427f1f4f-38d6-b1bc-7081-23eca6d6a621.mp3",
+      "isExclusive": false,
+      "isPlayable": false,
+      "isPublished": true,
+      "alternatives": [],
+      "duration": 1065,
+      "pubDate": "2023-10-06T14:46:18.000Z",
+      "createdAt": "2023-10-06T18:28:08.883Z",
+      "updatedAt": "2023-10-06T18:28:08.883Z"
+    },
+    {
+      "id": "650f921e2fb6808d7df283d2",
       "guid": "96c95b34-df01-4229-98db-125551765c41",
       "title": "Subrumundo #294 - Quietude",
       "slug": "subrumundo-294-quietude",
@@ -15,11 +33,11 @@
       "alternatives": [],
       "duration": 1425,
       "pubDate": "2023-09-06T16:07:10.000Z",
-      "createdAt": "2023-09-22T22:16:36.828Z",
-      "updatedAt": "2023-09-22T22:17:24.113Z"
+      "createdAt": "2023-09-24T01:34:21.234Z",
+      "updatedAt": "2023-10-06T18:28:08.883Z"
     },
     {
-      "id": "650e124471bca69804633add",
+      "id": "650f921e2fb6808d7df283d3",
       "guid": "7a698e7c-c712-4fe5-8400-dc480e612de0",
       "title": "Subrumundo #293 - A Classe",
       "slug": "subrumundo-293-a-classe",
@@ -33,11 +51,11 @@
       "alternatives": [],
       "duration": 770,
       "pubDate": "2023-08-04T14:13:26.000Z",
-      "createdAt": "2023-09-22T22:16:36.828Z",
-      "updatedAt": "2023-09-22T22:17:24.113Z"
+      "createdAt": "2023-09-24T01:34:21.234Z",
+      "updatedAt": "2023-10-06T18:28:08.883Z"
     },
     {
-      "id": "650e124471bca69804633ade",
+      "id": "650f921e2fb6808d7df283d4",
       "guid": "ae3c0a90-bc6a-417e-a455-14101bcc8b44",
       "title": "Subrumundo #292 - Relatório",
       "slug": "subrumundo-292-relatorio",
@@ -51,11 +69,11 @@
       "alternatives": [],
       "duration": 1024,
       "pubDate": "2023-07-28T10:30:00.000Z",
-      "createdAt": "2023-09-22T22:16:36.828Z",
-      "updatedAt": "2023-09-22T22:17:24.113Z"
+      "createdAt": "2023-09-24T01:34:21.234Z",
+      "updatedAt": "2023-10-06T18:28:08.883Z"
     },
     {
-      "id": "650e124471bca69804633adf",
+      "id": "650f921e2fb6808d7df283d5",
       "guid": "cd0292e1-03be-435e-aac9-5fa5863dea90",
       "title": "Subrumundo #291 - Estática",
       "slug": "subrumundo-291-estatica",
@@ -69,11 +87,11 @@
       "alternatives": [],
       "duration": 986,
       "pubDate": "2023-07-07T10:00:00.000Z",
-      "createdAt": "2023-09-22T22:16:36.828Z",
-      "updatedAt": "2023-09-22T22:17:24.113Z"
+      "createdAt": "2023-09-24T01:34:21.234Z",
+      "updatedAt": "2023-10-06T18:28:08.883Z"
     },
     {
-      "id": "650e124471bca69804633ae0",
+      "id": "650f921e2fb6808d7df283d6",
       "guid": "517146d0-70a5-47aa-b20e-86173e989764",
       "title": "Subrumundo #290 - Rio Vermelho",
       "slug": "subrumundo-290-rio-vermelho",
@@ -87,11 +105,11 @@
       "alternatives": [],
       "duration": 1009,
       "pubDate": "2023-06-23T15:15:30.000Z",
-      "createdAt": "2023-09-22T22:16:36.828Z",
-      "updatedAt": "2023-09-22T22:17:24.113Z"
+      "createdAt": "2023-09-24T01:34:21.234Z",
+      "updatedAt": "2023-10-06T18:28:08.883Z"
     },
     {
-      "id": "650e124471bca69804633ae1",
+      "id": "650f921e2fb6808d7df283d7",
       "guid": "ccf42f8f-765a-4a3f-8827-9f5ab4482227",
       "title": "Subrumundo Crônicas #2 - Rafaela",
       "slug": "subrumundo-cronicas-2-rafaela",
@@ -105,11 +123,11 @@
       "alternatives": [],
       "duration": 1932,
       "pubDate": "2023-06-02T10:00:32.000Z",
-      "createdAt": "2023-09-22T22:16:36.828Z",
-      "updatedAt": "2023-09-22T22:17:24.113Z"
+      "createdAt": "2023-09-24T01:34:21.234Z",
+      "updatedAt": "2023-10-06T18:28:08.883Z"
     },
     {
-      "id": "650e124471bca69804633ae2",
+      "id": "650f921e2fb6808d7df283d8",
       "guid": "446d4e06-69fe-40ff-ad6e-df9ee207fe56",
       "title": "Subrumundo #289 - Mãe Diferente",
       "slug": "subrumundo-289-mae-diferente",
@@ -123,11 +141,11 @@
       "alternatives": [],
       "duration": 1005,
       "pubDate": "2023-05-19T21:48:17.000Z",
-      "createdAt": "2023-09-22T22:16:36.828Z",
-      "updatedAt": "2023-09-22T22:17:24.113Z"
+      "createdAt": "2023-09-24T01:34:21.234Z",
+      "updatedAt": "2023-10-06T18:28:08.883Z"
     },
     {
-      "id": "650e124471bca69804633ae3",
+      "id": "650f921e2fb6808d7df283d9",
       "guid": "58e3197f-87f7-4f10-a0eb-01047f63c341",
       "title": "Subrumundo Drops #13 - A Reforma",
       "slug": "subrumundo-drops-13-a-reforma",
@@ -141,11 +159,11 @@
       "alternatives": [],
       "duration": 460,
       "pubDate": "2023-04-27T22:35:56.000Z",
-      "createdAt": "2023-09-22T22:16:36.828Z",
-      "updatedAt": "2023-09-22T22:17:24.113Z"
+      "createdAt": "2023-09-24T01:34:21.234Z",
+      "updatedAt": "2023-10-06T18:28:08.883Z"
     },
     {
-      "id": "650e124471bca69804633ae4",
+      "id": "650f921e2fb6808d7df283da",
       "guid": "90f71440-746b-439c-8442-bb7b6cee1b9f",
       "title": "Subrumundo #288 - Estrelas do céu",
       "slug": "subrumundo-288-estrelas-do-ceu",
@@ -159,27 +177,9 @@
       "alternatives": [],
       "duration": 1602,
       "pubDate": "2023-03-24T10:30:22.000Z",
-      "createdAt": "2023-09-22T22:16:36.828Z",
-      "updatedAt": "2023-09-22T22:17:24.113Z"
-    },
-    {
-      "id": "650e124471bca69804633ae5",
-      "guid": "6a05b67e-e107-42eb-a506-7268b642fa2e",
-      "title": "Subrumundo #287 - Só Mais Um...",
-      "slug": "subrumundo-287-so-mais-um",
-      "description": "As vezes passos em qualquer direção não te levam a lugar nenhum.<br>Quero ouvir suas sugestões:  <a target=\"_blank\"  class=\"anchor\" href=\"mailto:subrumundo@gmail.com\">subrumundo@gmail.com</a><br>Facebook: Subrumundo terror.<br>Instagram: <a target=\"_blank\" class=\"anchor\" href=\"https://instagram.com/subrumundo\">@subrumundo</a><br>Quer apoiar o projeto?  <br><a target=\"_blank\"  class=\"anchor\" href=\"http://patreon.com/subrumundo\">patreon.com/subrumundo</a>  <br><a target=\"_blank\"  class=\"anchor\" href=\"http://www.catarse.me/subrumundoterror\">www.catarse.me/subrumundoterror</a><br>ou  procure Subrumundo no PicPay  <br><br>Music from:<br><a target=\"_blank\"  class=\"anchor\" href=\"http://www.incompetech.com\">www.incompetech.com</a><br><a target=\"_blank\"  class=\"anchor\" href=\"http://www.youtube.com/myuuji\">www.youtube.com/myuuji</a><br>Dave Grusin<br><br>--- <br><br>Send in a voice message: <a target=\"_blank\"  class=\"anchor\" href=\"https://podcasters.spotify.com/pod/show/subrumundo/message\">https://podcasters.spotify.com/pod/show/subrumundo/message</a>",
-      "imageUrl": "https://d3t3ozftmdmh3i.cloudfront.net/production/podcast_uploaded_episode/1615989/1615989-1679008635275-845545b7cec77.jpg",
-      "embedUrl": "https://anchor.fm/subrumundo/embed/episodesow/subrumundo/episodes/Subrumundo-287---S-Mais-Um-e20ipsv",
-      "audioUrl": "https://anchor.fm/s/a3a6434/podcast/play/66725215/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2023-2-16%2Fa6c8d860-cb85-2d2e-1c1f-9f14ef536847.mp3",
-      "isExclusive": false,
-      "isPlayable": false,
-      "isPublished": true,
-      "alternatives": [],
-      "duration": 883,
-      "pubDate": "2023-03-17T10:30:16.000Z",
-      "createdAt": "2023-09-22T22:16:36.828Z",
-      "updatedAt": "2023-09-22T22:17:24.113Z"
+      "createdAt": "2023-09-24T01:34:21.234Z",
+      "updatedAt": "2023-10-06T18:28:08.883Z"
     }
   ],
-  "total": 311
+  "total": 312
 }
