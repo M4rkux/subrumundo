@@ -1,7 +1,7 @@
 // place files you want to import through the `$lib` alias in this folder.
 
 import { PUBLIC_BASE_URL } from '$env/static/public';
-import { currentEpisode, isPlaying, nextEpisode, prevEpisode } from '../store/player';
+import { currentEpisode, isPlaying, nextEpisode, patronEpisodes, prevEpisode } from '../store/player';
 
 export interface Episode {
   id: string,
@@ -22,6 +22,7 @@ export interface Episode {
 const baseURL = PUBLIC_BASE_URL || 'http://localhost:3000';
 let _isPlaying: boolean;
 let _currentEpisode: Episode;
+let _patronEpisodes: Episode[] = [];
 
 isPlaying.subscribe((data) => {
   _isPlaying = data;
@@ -29,6 +30,10 @@ isPlaying.subscribe((data) => {
 
 currentEpisode.subscribe((data) => {
   _currentEpisode = data;
+});
+
+patronEpisodes.subscribe((data) => {
+  _patronEpisodes = data;
 });
 
 export async function getEpisodes(page: number = 1, amount: number = 10) {
@@ -40,6 +45,12 @@ export async function getEpisodes(page: number = 1, amount: number = 10) {
     return await response.json();
   }
 
+  const response = await fetch(url);
+  return await response.json();
+}
+
+export async function getPatronEpisodes() {
+  const url = `${baseURL}/patron-episodes`;
   const response = await fetch(url);
   return await response.json();
 }
@@ -74,20 +85,36 @@ export function formatDate(inputDate: Date): string {
   return `${day} de ${month}`;
 }
 
-async function getNextPrevEpisodes(id: string) {
+async function getNextPrevEpisodes(id: string): Promise<{prev: Episode|null, next: Episode|null}> {
   const response = await fetch(`${baseURL}/episode/next-prev-episode?id=${id}`);
   return await response.json();
 }
 
-export async function PlayEpisode(episode: Episode) {
+export async function PlayEpisode(episode: Episode|null) {
+  if (!episode) return;
   isPlaying.set(!_isPlaying);
 
   if (_currentEpisode?.id !== episode.id) {
     currentEpisode.set(episode);
     isPlaying.set(false);
     isPlaying.set(true);
-    const {next, prev} = await getNextPrevEpisodes(episode.id);
+    let prevNextResponse;
+    if (!episode.isExclusive) {
+      prevNextResponse = await getNextPrevEpisodes(episode.id);
+    } else {
+      prevNextResponse = getPrevPatronEpisodes(episode.id);
+    }
+    const {next, prev} = prevNextResponse;
     nextEpisode.set(next);
     prevEpisode.set(prev);
+  }
+}
+
+
+function getPrevPatronEpisodes(id: string): {prev: Episode | null, next: Episode | null} {
+  const idx = _patronEpisodes.findIndex((episode) => episode.id === id);
+  return {
+    prev: idx > 0 ? _patronEpisodes[idx-1] : null,
+    next: idx < _patronEpisodes.length - 1 ? _patronEpisodes[idx+1] : null,
   }
 }

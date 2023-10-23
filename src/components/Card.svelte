@@ -13,19 +13,25 @@
 
 <div class="episode-card card bg-initial">
   <div class="flex flex-row">
-    <div class="img-wrapper">
-      <img src={episode.imageUrl} class="bg-black/50 h-auto w-full" alt={`Image of the episode ${episode.titleNormalized}`} />
-    </div>
+    {#if episode.imageUrl}
+      <div class="img-wrapper">
+        <img src={episode.imageUrl} class="bg-black/50 h-auto w-full" alt={`Image of the episode ${episode.titleNormalized}`} />
+      </div>
+    {/if}
     <div class="p-3 space-y-4">
       <h3 class="h3 font-bold { $currentEpisode?.id === episode.id ? 'text-primary-600' : 'text-gray-200' }" data-toc-ignore>{episode.title}</h3>
-      <img src={episode.imageUrl} class="bg-black/50 h-auto w-[300px] block lg:hidden mx-auto rounded-lg" alt={`Image of the episode ${episode.titleNormalized}`} />
-      <article>
-        <p class="description">
-          <!-- cspell:disable -->
-          {@html episode.description}
-          <!-- cspell:enable -->
-        </p>
-      </article>
+        {#if episode.imageUrl}
+          <img src={episode.imageUrl} class="bg-black/50 h-auto w-[300px] block lg:hidden mx-auto rounded-lg" alt={`Image of the episode ${episode.titleNormalized}`} />
+        {/if}
+        {#if episode.description}
+        <article>
+          <p class="description">
+            <!-- cspell:disable -->
+            {@html episode.description}
+            <!-- cspell:enable -->
+          </p>
+        </article>
+      {/if}
       <hr class="opacity-50" />
       <footer class="flex justify-start items-center px-4 space-x-4">
         <div class="flex-auto flex items-center gap-2">
@@ -38,9 +44,13 @@
               {/if}
             </button>
           </div>
+          {#if episode.pubDate}
           <small>{formatDate(episode.pubDate)}</small>
+          {/if}
+          {#if episode.duration}
           ·
           <small>{secondsToHMS(episode.duration)}</small>
+          {/if}
         </div>
       </footer>
     </div>

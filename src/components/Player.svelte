@@ -45,8 +45,6 @@
     }
   });
 
- 
-
   currentEpisode.subscribe((data) => {
     episode = data;
   });
@@ -87,7 +85,9 @@
 </script>
 <div class="player {$currentEpisode ? 'player--show' : ''}">
   <div class="player__episode-description">
-    <img class="player__image" src={episode?.imageUrl} alt="Episode art"/>
+    {#if episode?.imageUrl}
+      <img class="player__image" src={episode?.imageUrl} alt="Episode art"/>
+    {/if}
     <div class="flex flex-col items-start justify-center">
       <h4 class="player__title">{title}</h4>
       <h6 class="player__subtitle">{subtitle}</h6>

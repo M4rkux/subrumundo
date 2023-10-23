@@ -4,6 +4,7 @@
 	import Player from '../components/Player.svelte';
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
+	import { page } from '$app/stores';
 
 	inject({ mode: dev ? 'development' : 'production' });
 
@@ -12,6 +13,10 @@
 	function toggleMenu() {
 		isMenuVisible = !isMenuVisible;
 	}
+
+	page.subscribe(() => {
+		isMenuVisible = false;
+	});
 </script>
 
 <!-- App Shell -->
@@ -48,6 +53,15 @@
 				<div class="navbar-menu fixed z-50 {isMenuVisible ? 'sm:hidden block' : 'hidden'}">
 					<nav class="fixed top-[72px] left-0 bottom-0 flex flex-col w-full py-6 px-6 bg-gray-900">
 						<ul>
+							<li class="mb-2">
+								<a
+									class={`btn w-full ${$page.url.pathname.includes('/patroes') ? 'variant-filled-tertiary' : 'variant-outline-tertiary'}`}
+									href="/patroes"
+									rel="noreferrer"
+								>
+									Episódios dos patrões
+								</a>
+							</li>
 							<li class="mb-2">
 								<a
 									class="btn w-full variant-outline-tertiary"
@@ -103,6 +117,13 @@
 				</div>
 
 				<div class="hidden sm:block">
+					<a
+						class={`btn btn-sm ${$page.url.pathname.includes('/patroes') ? 'variant-filled-surface' : 'variant-outline-surface'}`}
+						href="/patroes"
+						rel="noreferrer"
+					>
+						Episódios dos patrões
+					</a>
 					<a
 						class="btn btn-sm variant-ghost-surface"
 						href="https://subrumundo-terror.lojaintegrada.com.br"
