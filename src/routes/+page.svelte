@@ -75,8 +75,8 @@
 
 </script>
 
-<div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-10 py-10 text-center flex flex-col justify-between items-center h-full {$currentEpisode ? 'pb-[115px]' : ''}">
+<div class="container h-full mx-auto flex justify-center items-center {$currentEpisode ? 'pb-[115px]' : ''}">
+	<div class="space-y-10 py-10 text-center flex flex-col justify-between items-center h-full">
 
 		{#if total > 0 }
 			<Paginator

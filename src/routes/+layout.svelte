@@ -64,7 +64,7 @@
 							</li>
 							<li class="mb-2">
 								<a
-									class="btn w-full variant-outline-tertiary"
+									class="btn w-full variant-outline-surface"
 									href="https://subrumundo-terror.lojaintegrada.com.br"
 									target="_blank"
 									rel="noreferrer"
@@ -74,7 +74,7 @@
 							</li>
 							<li class="mb-2">
 								<a
-									class="btn w-full variant-outline-tertiary"
+									class="btn w-full variant-outline-surface"
 									href="https://open.spotify.com/show/0gSRglGiQw35746M4aCytk?si=e303016df2c84bd5"
 									target="_blank"
 									rel="noreferrer"
@@ -84,7 +84,7 @@
 							</li>
 							<li class="mb-2">
 								<a
-									class="btn w-full variant-outline-tertiary"
+									class="btn w-full variant-outline-surface"
 									href="https://www.instagram.com/subrumundo/"
 									target="_blank"
 									rel="noreferrer"
@@ -94,7 +94,7 @@
 							</li>
 							<li class="mb-2">
 								<a
-									class="btn w-full variant-outline-tertiary"
+									class="btn w-full variant-outline-surface"
 									href="https://www.patreon.com/subrumundo"
 									target="_blank"
 									rel="noreferrer"
@@ -104,7 +104,7 @@
 							</li>
 							<li class="mb-2">
 								<a
-									class="btn w-full variant-outline-tertiary"
+									class="btn w-full variant-outline-surface"
 									href="https://www.catarse.me/subrumundoterror"
 									target="_blank"
 									rel="noreferrer"
@@ -118,7 +118,7 @@
 
 				<div class="hidden sm:block">
 					<a
-						class={`btn btn-sm ${$page.url.pathname.includes('/patroes') ? 'variant-filled-surface' : 'variant-outline-surface'}`}
+						class={`btn btn-sm ${$page.url.pathname.includes('/patroes') ? 'variant-filled-tertiary' : 'variant-outline-tertiary'}`}
 						href="/patroes"
 						rel="noreferrer"
 					>

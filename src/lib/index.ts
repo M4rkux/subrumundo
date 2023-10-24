@@ -2,6 +2,7 @@
 
 import { PUBLIC_BASE_URL } from '$env/static/public';
 import { currentEpisode, isPlaying, nextEpisode, patronEpisodes, prevEpisode } from '../store/player';
+import { user, type User } from '../store/user';
 
 export interface Episode {
   id: string,
@@ -23,6 +24,11 @@ const baseURL = PUBLIC_BASE_URL || 'http://localhost:3000';
 let _isPlaying: boolean;
 let _currentEpisode: Episode;
 let _patronEpisodes: Episode[] = [];
+let _user: User|null;
+
+user.subscribe((data) => {
+  _user = data;
+});
 
 isPlaying.subscribe((data) => {
   _isPlaying = data;
@@ -50,8 +56,14 @@ export async function getEpisodes(page: number = 1, amount: number = 10) {
 }
 
 export async function getPatronEpisodes() {
+  if (!_user) return;
+
   const url = `${baseURL}/patron-episodes`;
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    headers: {
+      "Authorization": `Bearer ${_user.token}`,
+    },
+  });
   return await response.json();
 }
 
@@ -110,11 +122,34 @@ export async function PlayEpisode(episode: Episode|null) {
   }
 }
 
-
 function getPrevPatronEpisodes(id: string): {prev: Episode | null, next: Episode | null} {
   const idx = _patronEpisodes.findIndex((episode) => episode.id === id);
   return {
     prev: idx > 0 ? _patronEpisodes[idx-1] : null,
     next: idx < _patronEpisodes.length - 1 ? _patronEpisodes[idx+1] : null,
   }
+}
+
+export async function logInWithGoogle(e: CustomEvent) {
+  const googleToken = e.detail.user.Oc.id_token;
+  const email = e.detail.user.Xx.Sy;
+
+  const response = await fetch(`${baseURL}/authentication/login-with-google`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, googleToken })
+  });
+  const subscriberUser: User = await response.json();
+
+  if (subscriberUser.token) {
+    user.set(subscriberUser);
+    sessionStorage.setItem('subscriberUser', JSON.stringify(subscriberUser));
+  }
+}
+
+export function logOutWithGoogle() {
+  user.set(null);
+  sessionStorage.removeItem('subscriberUser');
 }

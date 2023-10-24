@@ -39,6 +39,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@beyonk/svelte-social-auth": "^3.0.0",
     "@vercel/analytics": "^1.1.0"
   }
 }
